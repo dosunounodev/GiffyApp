@@ -1,4 +1,4 @@
-# Giffy 📍
+# Giffy 🌠
 
 A gifs application to search gifs of any topic, view trending gifs and more
 
