@@ -5,9 +5,11 @@ import Favs from './components/Pages/Favs';
 import SearchResults from './components/Pages/SearchResults';
 import Detail from './components/Pages/Detail';
 import NotFound from './components/Pages/NotFound';
+import LastSearchProvider from 'contexts/LastSearchProvider';
 
 function App() {
   return (
+    <LastSearchProvider>
     <MainLayout>
       <Switch>
         <Route exact path="/" component={Home} />
@@ -17,7 +19,8 @@ function App() {
         <Route exact path="/gif/:gifId" component={Detail} />
         <Route path="*" component={NotFound} />
       </Switch>
-    </MainLayout>
+      </MainLayout>
+      </LastSearchProvider>
   );
 }
 
