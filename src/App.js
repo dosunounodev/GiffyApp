@@ -11,6 +11,7 @@ function App() {
     <MainLayout>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/GiffyApp" component={Home} />
         <Route exact path="/favs" component={Favs} />
         <Route exact path="/search/:keyword" component={SearchResults} />
         <Route exact path="/gif/:gifId" component={Detail} />
