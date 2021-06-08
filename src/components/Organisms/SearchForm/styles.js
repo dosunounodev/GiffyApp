@@ -3,16 +3,25 @@ import styled from 'styled-components';
 export const SearchFormWrapper = styled.form`
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
   width: 100%;
-  margin-bottom: 30px;
+  height: 100px;
+  max-width: 600px;
+  margin-bottom: 0px;
+  background-color: red;
+  @media screen and (min-width: 650px) {
+    flex-direction: row;
+    justify-content: space-around;
+    height: 60px;
+  }
 
   input,
   button {
     display: block;
     width: 100%;
     max-width: 280px;
+    height: 40px;
     padding: 10px;
     border: 2px solid #1565c0;
     border-radius: 5px;
@@ -26,7 +35,6 @@ export const SearchFormWrapper = styled.form`
   }
 
   input {
-    margin-bottom: 10px;
     color: initial;
   }
 

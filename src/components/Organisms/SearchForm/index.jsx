@@ -1,11 +1,11 @@
-import { LastSearchContext } from 'contexts/LastSearchContext';
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router';
+import { DataContext } from 'contexts/DataContext';
 import { SearchFormWrapper } from './styles';
 
 const SearchForm = ({ keyword, setKeyword }) => {
   const history = useHistory();
-  const { setLastSearch } = useContext(LastSearchContext);
+  const { setLastSearch } = useContext(DataContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
