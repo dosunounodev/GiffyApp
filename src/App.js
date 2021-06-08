@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from 'react-router';
+import MainLayout from './components/Templates/MainLayout';
+import Home from './components/Pages/Home';
+import Favs from './components/Pages/Favs';
+import SearchResults from './components/Pages/SearchResults';
+import Detail from './components/Pages/Detail';
+import NotFound from './components/Pages/NotFound';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainLayout>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/favs" component={Favs} />
+        <Route exact path="/search/:keyword" component={SearchResults} />
+        <Route exact path="/gif/:gifId" component={Detail} />
+        <Route path="*" component={NotFound} />
+      </Switch>
+    </MainLayout>
   );
 }
 
