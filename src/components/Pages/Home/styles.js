@@ -37,4 +37,33 @@ const TrendingGifLink = styled(Link)`
   }
 `;
 
-export { HomeTitle, SectionWrapper, TrendingsWrapper, TrendingGifLink };
+const ViewAllButton = styled.button`
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: 40px;
+  padding: 10px;
+  margin-top: 20px;
+  border: 2px solid #1565c0;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  color: #1565c0;
+  transition-property: color, background-color;
+  transition-duration: 0.3s;
+  will-change: color, background-color;
+  cursor: pointer;
+  text-transform: uppercase;
+  &:hover {
+    color: #fff;
+    background-color: #1565c0;
+  }
+`;
+
+export {
+  HomeTitle,
+  SectionWrapper,
+  TrendingsWrapper,
+  TrendingGifLink,
+  ViewAllButton,
+};

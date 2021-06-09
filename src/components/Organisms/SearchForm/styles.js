@@ -8,8 +8,7 @@ export const SearchFormWrapper = styled.form`
   width: 100%;
   height: 100px;
   max-width: 600px;
-  margin-bottom: 0px;
-  background-color: red;
+  margin-bottom: 20px;
   @media screen and (min-width: 650px) {
     flex-direction: row;
     justify-content: space-around;
@@ -26,7 +25,6 @@ export const SearchFormWrapper = styled.form`
     border: 2px solid #1565c0;
     border-radius: 5px;
     text-align: center;
-    text-transform: uppercase;
     font-weight: bold;
     color: #1565c0;
     transition-property: color, background-color;
@@ -40,6 +38,7 @@ export const SearchFormWrapper = styled.form`
 
   button {
     cursor: pointer;
+    text-transform: uppercase;
     &:hover {
       color: #fff;
       background-color: #1565c0;

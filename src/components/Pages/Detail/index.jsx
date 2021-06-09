@@ -14,7 +14,7 @@ const Detail = () => {
         <DetailTitle>Cargando . . . </DetailTitle>
       ) : (
         <>
-          <DetailTitle>Gif Detail</DetailTitle>
+          {/* <DetailTitle>Gif Detail</DetailTitle> */}
           <ListOfGifs gifs={gifs} />
         </>
       )}
