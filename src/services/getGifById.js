@@ -6,7 +6,6 @@ const getGifById = async ({ gifId } = {}) => {
   const { id, images, title } = json.data;
   const url = images.downsized_medium.url;
   const gif = [{ id, title, url }];
-  console.log(gif);
   return gif;
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { GifContainer, GifTitle, GifImageWrapper, GifImage } from './styles';
+import { GifContainer, GifTitle, GifImage } from './styles';
 
 const Gif = ({ gifData }) => {
   const { id, title, url } = gifData;
@@ -8,9 +8,7 @@ const Gif = ({ gifData }) => {
     <Link to={`/gif/${id}`}>
       <GifContainer>
         <GifTitle>{title}</GifTitle>
-        <GifImageWrapper>
-          <GifImage key={id} alt={title} src={url}></GifImage>
-        </GifImageWrapper>
+        <GifImage key={id} alt={title} src={url}></GifImage>
       </GifContainer>
     </Link>
   );

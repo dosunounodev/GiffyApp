@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router';
 import { DataContext } from 'contexts/DataContext';
 import { SearchFormWrapper } from './styles';
+import Button from 'components/Atoms/Button';
 
 const SearchForm = ({ keyword, setKeyword }) => {
   const history = useHistory();
@@ -22,7 +23,7 @@ const SearchForm = ({ keyword, setKeyword }) => {
         placeholder="Search a gif here"
         onChange={(e) => setKeyword(e.target.value)}
       />
-      <button>View All Results</button>
+      <Button type="submit">View All Results</Button>
     </SearchFormWrapper>
   );
 };

@@ -23,7 +23,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size:1.6rem;
     font-weight: 400;
-    color: #fafafa;
+    color: #000;
 }
 
 section {

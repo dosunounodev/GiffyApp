@@ -6,7 +6,7 @@ const Main = styled.main`
   justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
-  background-color: #111;
+  background-color: #000;
   color: #fff;
 `;
 

@@ -14,9 +14,12 @@ const SectionWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
   margin-bottom: 50px;
+  padding: 20px 0;
+  background-color: ${({ bgcolor }) => (bgcolor ? bgcolor : 'inherit')};
+  color: ${({ bgcolor }) => (bgcolor === 'white' ? 'black' : 'inherit')};
 `;
 
 const TrendingsWrapper = styled.div`
@@ -32,38 +35,9 @@ const TrendingGifLink = styled(Link)`
   padding: 5px;
   border: 2px solid #1565c0;
   &:hover {
-    background-color: #fff;
+    background-color: #000;
     color: #1565c0;
   }
 `;
 
-const ViewAllButton = styled.button`
-  display: block;
-  width: 100%;
-  max-width: 280px;
-  height: 40px;
-  padding: 10px;
-  margin-top: 20px;
-  border: 2px solid #1565c0;
-  border-radius: 5px;
-  text-align: center;
-  font-weight: bold;
-  color: #1565c0;
-  transition-property: color, background-color;
-  transition-duration: 0.3s;
-  will-change: color, background-color;
-  cursor: pointer;
-  text-transform: uppercase;
-  &:hover {
-    color: #fff;
-    background-color: #1565c0;
-  }
-`;
-
-export {
-  HomeTitle,
-  SectionWrapper,
-  TrendingsWrapper,
-  TrendingGifLink,
-  ViewAllButton,
-};
+export { HomeTitle, SectionWrapper, TrendingsWrapper, TrendingGifLink };

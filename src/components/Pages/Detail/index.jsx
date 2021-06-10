@@ -1,8 +1,8 @@
 import React from 'react';
-import ListOfGifs from 'components/Organisms/ListOfGifs';
 import { useParams } from 'react-router';
-import { DetailTitle } from './styles';
+import ListOfGifs from 'components/Organisms/ListOfGifs';
 import { useGetGifById } from 'hooks/useGetGifById';
+import { DetailTitle } from './styles';
 
 const Detail = () => {
   const { gifId } = useParams();
@@ -14,7 +14,6 @@ const Detail = () => {
         <DetailTitle>Cargando . . . </DetailTitle>
       ) : (
         <>
-          {/* <DetailTitle>Gif Detail</DetailTitle> */}
           <ListOfGifs gifs={gifs} />
         </>
       )}
