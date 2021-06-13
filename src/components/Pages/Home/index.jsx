@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { DataContext } from 'contexts/DataContext';
-import SearchGifsSection from 'components/Organisms/SearchGifsSection';
 import LastSearchSection from 'components/Organisms/LastSearchSection';
 import TrendingGifsSection from 'components/Organisms/TrendingGifsSection';
+import SearchForm from 'components/Organisms/SearchForm';
 
 import {
   HomeTitle,
@@ -16,22 +16,18 @@ const Home = () => {
 
   return (
     <section>
-      <SectionWrapper>
-        <SearchGifsSection />
-      </SectionWrapper>
+      <SearchForm />
 
-      {lastSearch ? (
-        <SectionWrapper>
-          <HomeTitle>Last Search: '{lastSearch}'</HomeTitle>
-          <LastSearchSection />
-        </SectionWrapper>
-      ) : null}
+      <SectionWrapper>
+        <HomeTitle>Last Search: '{lastSearch}'</HomeTitle>
+        {lastSearch ? <LastSearchSection /> : <p>Do a search</p>}
+      </SectionWrapper>
 
       <SectionWrapper bgcolor="white">
         <HomeTitle>Top Categories</HomeTitle>
         <TrendingsWrapper>
-          {trendingTerms.map((topic) => (
-            <TrendingGifLink key={topic} to={`/search/${topic}`}>
+          {trendingTerms.map((topic, index) => (
+            <TrendingGifLink key={index} to={`/search/${topic}`}>
               {topic}
             </TrendingGifLink>
           ))}
@@ -46,4 +42,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default React.memo(Home);

@@ -14,4 +14,7 @@ const Gif = ({ gifData }) => {
   );
 };
 
-export default Gif;
+export default React.memo(
+  Gif,
+  (prevProps, nextProps) => prevProps.id === nextProps.id
+);

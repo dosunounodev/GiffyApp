@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LogoContainer, SubTitle, Title } from './styles';
+import { LogoContainer, Title } from './styles';
 
 const Logo = () => {
   return (

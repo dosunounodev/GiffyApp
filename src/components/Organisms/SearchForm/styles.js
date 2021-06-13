@@ -8,6 +8,7 @@ export const SearchFormWrapper = styled.form`
   width: 100%;
   height: 100px;
   max-width: 600px;
+  margin: 0 auto;
   margin-bottom: 20px;
   @media screen and (min-width: 650px) {
     flex-direction: row;

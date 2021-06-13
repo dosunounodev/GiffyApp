@@ -1,31 +1,29 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router';
-import { DataContext } from 'contexts/DataContext';
 import { SearchFormWrapper } from './styles';
 import Button from 'components/Atoms/Button';
 
-const SearchForm = ({ keyword, setKeyword }) => {
+const SearchForm = ({ initiaKeyword = '' }) => {
   const history = useHistory();
-  const { setLastSearch } = useContext(DataContext);
+
+  const [inputValue, setInputValue] = useState(initiaKeyword);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push(`/search/${keyword}`);
-    setLastSearch(keyword);
-    localStorage.setItem('lastSearch', keyword);
+    history.push(`/search/${inputValue}`);
   };
 
   return (
     <SearchFormWrapper onSubmit={handleSubmit}>
       <input
         type="text"
-        value={keyword}
+        value={inputValue}
         placeholder="Search a gif here"
-        onChange={(e) => setKeyword(e.target.value)}
+        onChange={(e) => setInputValue(e.target.value)}
       />
-      <Button type="submit">View All Results</Button>
+      <Button type="submit">Search</Button>
     </SearchFormWrapper>
   );
 };
 
-export default SearchForm;
+export default React.memo(SearchForm);
