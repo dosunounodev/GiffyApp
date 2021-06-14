@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <section>
       <Helmet>
-        <title>Giffy, Just a Gif Searcher App</title>
+        <title>Giffy, a Gif Searcher App</title>
       </Helmet>
 
       <SearchForm />
