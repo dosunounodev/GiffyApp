@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 const GifContainer = styled.article`
   position: relative;
   width: 100%;
-  height: 100%;
+  max-height: 100%;
   min-width: 200px;
   min-height: 200px;
   ${({ collage }) =>
@@ -11,15 +11,15 @@ const GifContainer = styled.article`
     css`
       @media screen and (min-width: 410px) {
         &:nth-child(5n + 1) {
+          grid-column: -2 / span 2;
+        }
+        &:nth-child(12n + 1) {
           grid-column: 1 / span 2;
-        }
-        &:nth-child(6n + 1) {
-          grid-column: span 2;
-          grid-row: span 1;
-        }
-        &:nth-child(8n + 1) {
           grid-row: span 2;
         }
+        /* &:nth-child(12n + 1) {
+          grid-row: span 2;
+        } */
       }
     `}
   max-width: 600px;
