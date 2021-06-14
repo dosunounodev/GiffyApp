@@ -3,9 +3,10 @@ import styled, { css } from 'styled-components';
 const GifContainer = styled.article`
   position: relative;
   width: 100%;
-  max-height: 100%;
+  height: auto;
   min-width: 200px;
   min-height: 200px;
+overflow: hidden;
   ${({ collage }) =>
     collage &&
     css`
@@ -20,24 +21,36 @@ const GifContainer = styled.article`
       }
     `}
   max-width: 600px;
+  &:hover {
+    border: 5px solid royalblue;
+    h3 {
+      background-color:royalblue;
+    }
+  }
+  &:hover img {
+    transform: scale(1.2);
+    z-index: 1
+  }
 `;
 
 const GifTitle = styled.h3`
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
-  padding: 5px;
-  font-size: 1.5rem;
-  text-align: center;
+  width: auto;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  font-weight: 500;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
+  z-index: 2
 `;
 const GifImage = styled.img`
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform .7s linear;
 `;
 
 export { GifContainer, GifTitle, GifImage };
