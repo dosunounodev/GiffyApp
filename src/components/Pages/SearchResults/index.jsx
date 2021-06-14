@@ -46,7 +46,7 @@ const SearchResults = () => {
   return (
     <>
       <Helmet>
-        <title>{`Gifs Results of: '${keywordsParams}' || Giffy, a Gif Searcher App`}</title>
+        <title>{`${gifs.length} Results of: '${keywordsParams}' || Giffy, a Gif Searcher App`}</title>
       </Helmet>
       <SectionWrapper>
         <SearchForm initialKeyword={keywordsParams} />
