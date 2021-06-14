@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useEffect, useRef } from 'react';
-import { useParams } from 'react-router';
+import { useParams, Redirect } from 'react-router';
+import { Helmet } from 'react-helmet';
 import debounce from 'just-debounce-it';
 import { DataContext } from 'contexts/DataContext';
 import ListOfGifs from 'components/Organisms/ListOfGifs';
@@ -12,7 +13,7 @@ const SearchResults = () => {
   const { setLastSearch } = useContext(DataContext);
   const { keyword: keywordsParams } = useParams();
 
-  const { gifs, loading, setPage } = useGetGifsByKeyword({
+  const { gifs, loading, error, setPage } = useGetGifsByKeyword({
     keyword: keywordsParams,
     limit: 10,
   });
@@ -39,19 +40,21 @@ const SearchResults = () => {
     if (isNearScreen) debounceHandleNextPage();
   }, [isNearScreen, debounceHandleNextPage]);
 
+  if (loading) return <SearchTitle>Cargando . . . </SearchTitle>;
+  if (error) return <Redirect to="/NotFound" />;
+
   return (
-    <section>
-      {loading ? (
-        <SearchTitle>Loading . . . </SearchTitle>
-      ) : (
-        <SectionWrapper>
-          <SearchForm initialKeyword={keywordsParams} />
-          <SearchTitle>{keywordsParams}</SearchTitle>
-          <ListOfGifs minheight gifs={gifs} />
-          <div ref={externalRef}></div>
-        </SectionWrapper>
-      )}
-    </section>
+    <>
+      <Helmet>
+        <title>{`Gifs Results of: '${keywordsParams}' || Giffy`}</title>
+      </Helmet>
+      <SectionWrapper>
+        <SearchForm initialKeyword={keywordsParams} />
+        <SearchTitle>{keywordsParams}</SearchTitle>
+        <ListOfGifs minheight gifs={gifs} collage />
+        <div ref={externalRef}></div>
+      </SectionWrapper>
+    </>
   );
 };
 

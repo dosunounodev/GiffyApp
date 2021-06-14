@@ -2,15 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { GifContainer, GifTitle, GifImage } from './styles';
 
-const Gif = ({ gifData }) => {
+const Gif = ({ gifData, collage }) => {
   const { id, title, url } = gifData;
   return (
-    <Link to={`/gif/${id}`}>
-      <GifContainer>
+    <GifContainer collage={collage}>
+      <Link to={`/gif/${id}`}>
         <GifTitle>{title}</GifTitle>
         <GifImage key={id} alt={title} src={url}></GifImage>
-      </GifContainer>
-    </Link>
+      </Link>
+    </GifContainer>
   );
 };
 

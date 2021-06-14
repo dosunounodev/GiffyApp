@@ -1,37 +1,41 @@
 import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet';
 import { DataContext } from 'contexts/DataContext';
 import LastSearchSection from 'components/Organisms/LastSearchSection';
 import TrendingGifsSection from 'components/Organisms/TrendingGifsSection';
 import SearchForm from 'components/Organisms/SearchForm';
-
-import {
-  HomeTitle,
-  SectionWrapper,
-  TrendingsWrapper,
-  TrendingGifLink,
-} from './styles';
+import TrendingTermsSection from 'components/Organisms/TrendingTermsSection';
+import { HomeTitle, SectionWrapper } from './styles';
 
 const Home = () => {
-  const { lastSearch, trendingTerms } = useContext(DataContext);
+  const { lastSearch, loadingTrendingTerms } = useContext(DataContext);
 
   return (
     <section>
+      <Helmet>
+        <title>Giffy, Just a Gif Searcher App</title>
+      </Helmet>
+
       <SearchForm />
 
       <SectionWrapper>
-        <HomeTitle>Last Search: '{lastSearch}'</HomeTitle>
-        {lastSearch ? <LastSearchSection /> : <p>Do a search</p>}
+        {lastSearch ? (
+          <>
+            <HomeTitle>Last Search: '{lastSearch}'</HomeTitle>
+            <LastSearchSection />
+          </>
+        ) : (
+          <p>{`Hey! Do a search :)`}</p>
+        )}
       </SectionWrapper>
 
       <SectionWrapper bgcolor="white">
         <HomeTitle>Top Categories</HomeTitle>
-        <TrendingsWrapper>
-          {trendingTerms.map((topic, index) => (
-            <TrendingGifLink key={index} to={`/search/${topic}`}>
-              {topic}
-            </TrendingGifLink>
-          ))}
-        </TrendingsWrapper>
+        {loadingTrendingTerms ? (
+          <HomeTitle>Loading</HomeTitle>
+        ) : (
+          <TrendingTermsSection />
+        )}
       </SectionWrapper>
 
       <SectionWrapper>
