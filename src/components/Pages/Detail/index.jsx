@@ -1,14 +1,16 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Redirect, useParams } from 'react-router-dom';
+import { Link, Redirect, useParams, useHistory } from 'react-router-dom';
 import ListOfGifs from 'components/Organisms/ListOfGifs';
 import { useGetGifById } from 'hooks/useGetGifById';
 import { DetailTitle } from './styles';
+import Button from 'components/Atoms/Button';
 
 const Detail = () => {
   const { gifId } = useParams();
   const { gifs, loading, error } = useGetGifById({ gifId });
   const gifDetail = gifs[0];
+  const history = useHistory();
 
   console.log(gifs);
 
@@ -30,7 +32,17 @@ const Detail = () => {
           {gifDetail ? `${gifDetail.title} || Giffy ` : 'Loading Gif || Giffy'}
         </title>
       </Helmet>
-      <ListOfGifs gifs={gifs} />
+      <ListOfGifs gifs={gifs} singleList />
+      <br />
+      {gifDetail && (
+        <Button onClick={() => history.push(`/search/${gifDetail.title}`)}>
+          View all '{gifDetail.title}' gifs
+        </Button>
+      )}
+      <br />
+      <Link to="/">
+        <Button>Back to Home</Button>
+      </Link>
     </section>
   );
 };

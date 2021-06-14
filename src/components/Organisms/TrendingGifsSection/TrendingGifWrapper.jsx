@@ -2,7 +2,7 @@ import { useGetTrendingGifs } from 'hooks/useGetTrendingGifs';
 import { Redirect } from 'react-router-dom';
 import ListOfGifs from '../ListOfGifs';
 
-const TrendingGifWrapper = () => {
+const TrendingGifWrapper = ({ collage }) => {
   const {
     gifs: trendingGifs,
     loading,
@@ -14,7 +14,7 @@ const TrendingGifWrapper = () => {
   if (loading) return <p>Loading . . . </p>;
   if (error) return <Redirect to="/NotFound" />;
 
-  return <ListOfGifs gifs={trendingGifs} />;
+  return <ListOfGifs gifs={trendingGifs} collage={collage} />;
 };
 
 export default TrendingGifWrapper;

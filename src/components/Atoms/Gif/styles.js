@@ -11,15 +11,12 @@ const GifContainer = styled.article`
     css`
       @media screen and (min-width: 410px) {
         &:nth-child(5n + 1) {
-          grid-column: -2 / span 2;
+          grid-column: span 2;
         }
         &:nth-child(12n + 1) {
-          grid-column: 1 / span 2;
+          grid-column: span 2;
           grid-row: span 2;
         }
-        /* &:nth-child(12n + 1) {
-          grid-row: span 2;
-        } */
       }
     `}
   max-width: 600px;
