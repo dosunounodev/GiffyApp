@@ -8,7 +8,7 @@ React, React-Router, Styled-Components, Hooks
 
 ### Deploy 🚀
 
-https://dosunounodev.github.io/GiffyApp/
+https://giffy-dosunounodev.vercel.app/
 
 ![giffy1](/githubscreenshots/giffy1.png?raw=true 'giffy1')
 ![giffy2](/githubscreenshots/giffy2.png?raw=true 'giffy2')
