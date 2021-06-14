@@ -20,7 +20,7 @@ const NotFound = () => {
   return (
     <section>
       <Helmet>
-        <title>Not Found ! Oopsss.. || Giffy, Just a Gif Searcher App</title>
+        <title>Not Found ! Oopsss.. || Giffy, a Gif Searcher App</title>
       </Helmet>
       <ImgWrapper>
         <img src={notFoundLogo} alt="Not Found" />
