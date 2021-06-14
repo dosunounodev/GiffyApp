@@ -29,7 +29,7 @@ const Detail = () => {
     <section>
       <Helmet>
         <title>
-          {gifDetail ? `${gifDetail.title} || Giffy ` : 'Loading Gif || Giffy'}
+          {gifDetail ? `${gifDetail.title} || Giffy, a Gif Searcher App ` : 'Loading Gif || Giffy, a Gif Searcher App'}
         </title>
       </Helmet>
       <ListOfGifs gifs={gifs} singleList />
