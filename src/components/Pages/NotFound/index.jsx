@@ -4,10 +4,11 @@ import { Helmet } from 'react-helmet';
 import { DataContext } from 'contexts/DataContext';
 import { useGetGifsByKeyword } from 'hooks/useGetGifsByKeyword';
 import Button from 'components/Atoms/Button';
+import Title from 'components/Atoms/Title';
+import SectionWrapper from 'components/Atoms/SectionWrapper';
+import ListOfGifs from 'components/Molecules/ListOfGifs';
 import TrendingTermsSection from 'components/Organisms/TrendingTermsSection';
-import ListOfGifs from 'components/Organisms/ListOfGifs';
 import notFoundLogo from 'assets/404.png';
-import { HomeTitle as Title, SectionWrapper } from '../Home/styles';
 import { ImgWrapper } from './style';
 
 const NotFound = () => {

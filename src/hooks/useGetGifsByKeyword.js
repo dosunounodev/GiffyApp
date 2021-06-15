@@ -3,7 +3,7 @@ import { getGifs } from 'services/getGifs';
 
 const INITIAL_PAGE = 0;
 
-const useGetGifsByKeyword = ({ keyword, limit = '' } = {}) => {
+const useGetGifsByKeyword = ({ keyword, limit = '', rating } = {}) => {
   const [gifs, setGifs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -12,7 +12,7 @@ const useGetGifsByKeyword = ({ keyword, limit = '' } = {}) => {
   useEffect(() => {
     setLoading(true);
     setError(false);
-    getGifs({ keyword, limit })
+    getGifs({ keyword, limit, rating })
       .then((response) => setGifs(response))
       .then(setLoading(false))
       .then(setError(false))
@@ -20,14 +20,14 @@ const useGetGifsByKeyword = ({ keyword, limit = '' } = {}) => {
         setLoading(false);
         setError(true);
       });
-  }, [keyword, limit]);
+  }, [keyword, limit, rating]);
 
   useEffect(() => {
     if (page === INITIAL_PAGE) return;
 
     setLoading(true);
 
-    getGifs({ keyword, limit, page })
+    getGifs({ keyword, limit, page, rating })
       .then((response) => setGifs((prevGifs) => [...prevGifs, ...response]))
       .then(setLoading(false))
       .then(setError(false))
@@ -35,7 +35,7 @@ const useGetGifsByKeyword = ({ keyword, limit = '' } = {}) => {
         setLoading(false);
         setError(true);
       });
-  }, [keyword, limit, page]);
+  }, [keyword, limit, rating, page]);
 
   return { loading, error, gifs, setPage };
 };

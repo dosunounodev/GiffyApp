@@ -1,10 +1,10 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { Link, Redirect, useParams, useHistory } from 'react-router-dom';
-import ListOfGifs from 'components/Organisms/ListOfGifs';
+import { Helmet } from 'react-helmet';
 import { useGetGifById } from 'hooks/useGetGifById';
-import { DetailTitle } from './styles';
 import Button from 'components/Atoms/Button';
+import Title from 'components/Atoms/Title';
+import ListOfGifs from 'components/Molecules/ListOfGifs';
 
 const Detail = () => {
   const { gifId } = useParams();
@@ -20,7 +20,7 @@ const Detail = () => {
         <Helmet>
           <title>Loading...</title>
         </Helmet>
-        <DetailTitle>Loading . . . </DetailTitle>
+        <Title>Loading . . . </Title>
       </>
     );
   if (error) return <Redirect to="/NotFound" />;
@@ -29,7 +29,9 @@ const Detail = () => {
     <section>
       <Helmet>
         <title>
-          {gifDetail ? `${gifDetail.title} || Giffy, a Gif Searcher App ` : 'Loading Gif || Giffy, a Gif Searcher App'}
+          {gifDetail
+            ? `${gifDetail.title} || Giffy, a Gif Searcher App `
+            : 'Loading Gif || Giffy, a Gif Searcher App'}
         </title>
       </Helmet>
       <ListOfGifs gifs={gifs} singleList />

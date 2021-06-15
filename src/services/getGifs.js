@@ -1,10 +1,15 @@
 import { API_URL, API_KEY } from 'services/settings';
 
-const getGifs = async ({ keyword = 'gif', limit = 10, page = 0 } = {}) => {
+const getGifs = async ({
+  keyword = 'gif',
+  limit = 10,
+  page = 0,
+  rating = 'g',
+} = {}) => {
   const res = await fetch(
-    `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${
+    `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&rating=${rating}&limit=${limit}&offset=${
       page * limit
-    }&rating=g&lang=en`
+    }&lang=en`
   );
   const json = await res.json();
   const { data } = json;

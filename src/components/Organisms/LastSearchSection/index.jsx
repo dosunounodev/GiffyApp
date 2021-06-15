@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { useHistory } from 'react-router';
+import { Redirect, useHistory } from 'react-router-dom';
 import { DataContext } from 'contexts/DataContext';
 import { useGetGifsByKeyword } from 'hooks/useGetGifsByKeyword';
-import ListOfGifs from 'components/Organisms/ListOfGifs';
 import Button from 'components/Atoms/Button';
-import { Redirect } from 'react-router-dom';
+import Title from 'components/Atoms/Title';
+import ListOfGifs from 'components/Molecules/ListOfGifs';
 
 const LastSearchSection = () => {
   const { lastSearch } = useContext(DataContext);
@@ -22,6 +22,7 @@ const LastSearchSection = () => {
   if (error) return <Redirect to="/NotFound" />;
   return (
     <>
+      <Title>Last Search: '{lastSearch}'</Title>
       <ListOfGifs gifs={lastSearchGifs} />
       <br />
       <Button onClick={() => history.push(`/search/${lastSearch}`)}>

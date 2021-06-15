@@ -14,7 +14,11 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/GiffyApp" component={Home} />
-            <Route exact path="/search/:keyword" component={SearchResults} />
+            <Route
+              exact
+              path="/search/:keyword/:rating?"
+              component={SearchResults}
+            />
             <Route exact path="/gif/:gifId" component={Detail} />
             <Route path="*" component={NotFound} />
           </Switch>

@@ -3,19 +3,21 @@ import { useParams, Redirect } from 'react-router';
 import { Helmet } from 'react-helmet';
 import debounce from 'just-debounce-it';
 import { DataContext } from 'contexts/DataContext';
-import ListOfGifs from 'components/Organisms/ListOfGifs';
-import SearchForm from 'components/Organisms/SearchForm';
 import { useGetGifsByKeyword } from 'hooks/useGetGifsByKeyword';
 import useNearScreen from 'hooks/useNearScreen';
-import { SectionWrapper, SearchTitle } from './styles';
+import Title from 'components/Atoms/Title';
+import SectionWrapper from 'components/Atoms/SectionWrapper';
+import ListOfGifs from 'components/Molecules/ListOfGifs';
+import SearchForm from 'components/Molecules/SearchForm';
 
 const SearchResults = () => {
   const { setLastSearch } = useContext(DataContext);
-  const { keyword: keywordsParams } = useParams();
+  const { keyword: keywordsParams, rating: ratingParams = 'g' } = useParams();
 
   const { gifs, loading, error, setPage } = useGetGifsByKeyword({
     keyword: keywordsParams,
     limit: 10,
+    rating: ratingParams,
   });
   const externalRef = useRef();
 
@@ -40,21 +42,24 @@ const SearchResults = () => {
     if (isNearScreen) debounceHandleNextPage();
   }, [isNearScreen, debounceHandleNextPage]);
 
-  if (loading) return <SearchTitle>Cargando . . . </SearchTitle>;
+  if (loading) return <Title>Cargando . . . </Title>;
   if (error) return <Redirect to="/NotFound" />;
 
   return (
-    <>
+    <section>
       <Helmet>
         <title>{`${gifs.length} Results of: '${keywordsParams}' || Giffy, a Gif Searcher App`}</title>
       </Helmet>
+      <SearchForm
+        initialKeyword={keywordsParams}
+        initialRating={ratingParams}
+      />
       <SectionWrapper>
-        <SearchForm initialKeyword={keywordsParams} />
-        <SearchTitle>{keywordsParams}</SearchTitle>
+        <Title>{keywordsParams}</Title>
         <ListOfGifs minheight gifs={gifs} collage />
         <div ref={externalRef}></div>
       </SectionWrapper>
-    </>
+    </section>
   );
 };
 

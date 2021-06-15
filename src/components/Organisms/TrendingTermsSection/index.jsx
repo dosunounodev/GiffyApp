@@ -1,23 +1,30 @@
-import { DataContext } from 'contexts/DataContext';
-import React, { useContext } from 'react';
+import React from 'react';
+import { useGetTrendingSearchTerms } from 'hooks/useGetTrendingSearchTerms';
+import Title from 'components/Atoms/Title';
 import { TrendingGifLink, TrendingsWrapper } from './style';
 
 const TrendingTermsSection = () => {
-  const { trendingTerms, loadingTrendingTerms, errorTrendingTerms } =
-    useContext(DataContext);
+  const {
+    terms: trendingTerms,
+    loading: loadingTrendingTerms,
+    error: errorTrendingTerms,
+  } = useGetTrendingSearchTerms();
 
   if (loadingTrendingTerms) return null;
   if (errorTrendingTerms)
     return <p>Se Produjo un error buscando trendings terms</p>;
 
   return (
-    <TrendingsWrapper>
-      {trendingTerms.map((topic, index) => (
-        <TrendingGifLink key={index} to={`/search/${topic}`}>
-          {topic}
-        </TrendingGifLink>
-      ))}
-    </TrendingsWrapper>
+    <>
+      <Title>Top Categories</Title>
+      <TrendingsWrapper>
+        {trendingTerms.map((topic, index) => (
+          <TrendingGifLink key={index} to={`/search/${topic}`}>
+            {topic}
+          </TrendingGifLink>
+        ))}
+      </TrendingsWrapper>
+    </>
   );
 };
 
