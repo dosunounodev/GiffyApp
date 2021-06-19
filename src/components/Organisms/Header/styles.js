@@ -17,4 +17,15 @@ const HeaderWrapper = styled.header`
   }
 `;
 
-export { HeaderWrapper };
+const LogoutButton = styled.button`
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  :hover {
+    text-decoration: underline;
+  }
+`;
+
+export { HeaderWrapper, LogoutButton };

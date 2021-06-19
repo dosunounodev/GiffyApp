@@ -9,7 +9,6 @@ const useGetTrendingSearchTerms = () => {
   useEffect(() => {
     setLoading(true);
     setError(false);
-    console.log('getting trends terms');
 
     getTrendingSearchTerms()
       .then((response) => {

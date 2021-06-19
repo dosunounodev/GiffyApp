@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useRef } from 'react';
 import { useParams, Redirect } from 'react-router';
 import { Helmet } from 'react-helmet';
 import debounce from 'just-debounce-it';
-import { DataContext } from 'contexts/DataContext';
+import { LastSearchContext } from 'contexts/LastSearchContext';
 import { useGetGifsByKeyword } from 'hooks/useGetGifsByKeyword';
 import useNearScreen from 'hooks/useNearScreen';
 import Title from 'components/Atoms/Title';
@@ -11,13 +11,13 @@ import ListOfGifs from 'components/Molecules/ListOfGifs';
 import SearchForm from 'components/Molecules/SearchForm';
 
 const SearchResults = () => {
-  const { setLastSearch } = useContext(DataContext);
+  const { setLastSearch } = useContext(LastSearchContext);
   const { keyword: keywordsParams, rating: ratingParams = 'g' } = useParams();
 
   const { gifs, loading, loadingMore, error, setPage } = useGetGifsByKeyword({
     keyword: keywordsParams,
-    limit: 10,
     rating: ratingParams,
+    limit: 10,
   });
   const externalRef = useRef();
 

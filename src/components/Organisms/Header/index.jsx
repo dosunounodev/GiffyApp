@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { HeaderWrapper } from './styles';
+import useUser from 'hooks/useUser';
+import { HeaderWrapper, LogoutButton } from './styles';
 
 const Header = () => {
-  const isLoged = true;
+  const { isLogged, logout } = useUser();
   return (
     <HeaderWrapper>
-      {isLoged ? (
-        <Link to="/logout">Logout</Link>
+      {isLogged ? (
+        <LogoutButton onClick={logout}>Logout</LogoutButton>
       ) : (
         <Link to="/login">Login</Link>
       )}
