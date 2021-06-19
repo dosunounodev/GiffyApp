@@ -1,7 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
-import { DataContext } from 'contexts/DataContext';
-import Title from 'components/Atoms/Title';
 import SectionWrapper from 'components/Atoms/SectionWrapper';
 import SearchForm from 'components/Molecules/SearchForm';
 import LastSearchSection from 'components/Organisms/LastSearchSection';
@@ -9,8 +7,6 @@ import TrendingGifsSection from 'components/Organisms/TrendingGifsSection';
 import TrendingTermsSection from 'components/Organisms/TrendingTermsSection';
 
 const Home = () => {
-  const { lastSearch } = useContext(DataContext);
-
   return (
     <section>
       <Helmet>
@@ -20,11 +16,7 @@ const Home = () => {
       <SearchForm />
 
       <SectionWrapper>
-        {lastSearch ? (
-          <LastSearchSection />
-        ) : (
-          <Title>{`Hey! Do a search :)`}</Title>
-        )}
+        <LastSearchSection />
       </SectionWrapper>
 
       <SectionWrapper bgcolor="white">

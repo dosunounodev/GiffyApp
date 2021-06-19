@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledTitle = styled.h2`
   display: block;
@@ -6,6 +6,9 @@ const StyledTitle = styled.h2`
   margin-bottom: 20px;
   font-size: 3.6rem;
   text-align: center;
+  ${({ color }) => css`
+    color: ${color};
+  `}
 `;
 
 export { StyledTitle };

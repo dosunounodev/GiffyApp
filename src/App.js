@@ -1,18 +1,21 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 import RootRouter from 'routes/RootRouter';
-import MainLayout from './components/Templates/MainLayout';
-import DataProvider from 'contexts/DataProvider';
+import MainLayout from 'components/Templates/MainLayout';
+import LastSearchProvider from 'contexts/LastSearchProvider';
+import UserProvider from 'contexts/UserProvider';
 import GlobalStyle from 'GlobalStyle';
 
 function App() {
   return (
     <Router>
-      <DataProvider>
-        <GlobalStyle />
-        <MainLayout>
-          <RootRouter />
-        </MainLayout>
-      </DataProvider>
+      <UserProvider>
+        <LastSearchProvider>
+          <GlobalStyle />
+          <MainLayout>
+            <RootRouter />
+          </MainLayout>
+        </LastSearchProvider>
+      </UserProvider>
     </Router>
   );
 }

@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { DataContext } from 'contexts/DataContext';
 import { useGetGifsByKeyword } from 'hooks/useGetGifsByKeyword';
 import Button from 'components/Atoms/Button';
 import Title from 'components/Atoms/Title';
@@ -12,8 +11,6 @@ import notFoundLogo from 'assets/404.png';
 import { ImgWrapper } from './style';
 
 const NotFound = () => {
-  const { loadingTrendingTerms } = useContext(DataContext);
-
   const { gifs, loading, error } = useGetGifsByKeyword({
     keyword: 'error 404',
     limit: 5,
@@ -43,11 +40,7 @@ const NotFound = () => {
       </SectionWrapper>
 
       <SectionWrapper bgcolor="white">
-        {loadingTrendingTerms ? (
-          <Title>Loading</Title>
-        ) : (
-          <TrendingTermsSection />
-        )}
+        <TrendingTermsSection />
       </SectionWrapper>
     </section>
   );

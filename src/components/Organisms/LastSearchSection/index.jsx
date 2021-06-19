@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
-import { DataContext } from 'contexts/DataContext';
+import { useHistory } from 'react-router-dom';
+import { LastSearchContext } from 'contexts/LastSearchContext';
 import { useGetGifsByKeyword } from 'hooks/useGetGifsByKeyword';
 import Button from 'components/Atoms/Button';
 import Title from 'components/Atoms/Title';
 import ListOfGifs from 'components/Molecules/ListOfGifs';
 
 const LastSearchSection = () => {
-  const { lastSearch } = useContext(DataContext);
+  const { lastSearch } = useContext(LastSearchContext);
   const {
     gifs: lastSearchGifs,
     loading,
@@ -19,8 +19,9 @@ const LastSearchSection = () => {
   const history = useHistory();
 
   if (loading) return <p>Loading . . . </p>;
-  if (error) return <Redirect to="/NotFound" />;
-  return (
+  if (error) return <p>Error founding Last Search </p>;
+
+  return lastSearch ? (
     <>
       <Title>Last Search: '{lastSearch}'</Title>
       <ListOfGifs gifs={lastSearchGifs} />
@@ -29,6 +30,8 @@ const LastSearchSection = () => {
         View all '{lastSearch}' gifs
       </Button>
     </>
+  ) : (
+    <Title>Hey! Do a Search</Title>
   );
 };
 

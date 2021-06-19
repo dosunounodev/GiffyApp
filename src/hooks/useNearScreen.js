@@ -15,7 +15,6 @@ const useNearScreen = ({
 
     const onChange = (entries, observer) => {
       const element = entries[0];
-      // console.log(element.isIntersecting);
       if (element.isIntersecting) {
         setIsNearScreen(true);
         once && observer.unobserve(elementRef);
