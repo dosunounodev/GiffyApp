@@ -5,7 +5,7 @@ const StyledButton = styled.button`
   width: 100%;
   max-width: 280px;
   margin: 0 auto;
-  height: 40px;
+  height: ${({ height }) => (height && height) || 'auto'};
   padding: 10px;
   border: 2px solid #1565c0;
   border-radius: 5px;
@@ -17,6 +17,7 @@ const StyledButton = styled.button`
   will-change: color, background-color;
   cursor: pointer;
   text-transform: uppercase;
+
   &:hover {
     color: #fff;
     background-color: #1565c0;

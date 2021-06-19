@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyledButton } from './styles';
 
-const Button = ({ children, onClick, invert = false }) => {
+const Button = ({ children, onClick, height, invert = false }) => {
   return (
-    <StyledButton invert={invert} onClick={onClick}>
+    <StyledButton height={height} invert={invert} onClick={onClick}>
       {children}
     </StyledButton>
   );

@@ -62,7 +62,9 @@ const Login = () => {
             onChange={handlePasswordChange}
           />
           <br />
-          <Button invert>Login</Button>
+          <Button height="60px" invert>
+            Login
+          </Button>
           <br />
           {loginError && <Title color="salmon">Credentials are invalid</Title>}
         </StyledForm>
