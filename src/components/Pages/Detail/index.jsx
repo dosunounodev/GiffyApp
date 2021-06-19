@@ -12,8 +12,6 @@ const Detail = () => {
   const gifDetail = gifs[0];
   const history = useHistory();
 
-  console.log(gifs);
-
   if (loading)
     return (
       <>

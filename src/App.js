@@ -1,27 +1,16 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import RootRouter from 'routes/RootRouter';
 import MainLayout from './components/Templates/MainLayout';
-import Home from './components/Pages/Home';
-import SearchResults from './components/Pages/SearchResults';
-import Detail from './components/Pages/Detail';
-import NotFound from './components/Pages/NotFound';
 import DataProvider from 'contexts/DataProvider';
+import GlobalStyle from 'GlobalStyle';
 
 function App() {
   return (
     <Router>
       <DataProvider>
+        <GlobalStyle />
         <MainLayout>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/GiffyApp" component={Home} />
-            <Route
-              exact
-              path="/search/:keyword/:rating?"
-              component={SearchResults}
-            />
-            <Route exact path="/gif/:gifId" component={Detail} />
-            <Route path="*" component={NotFound} />
-          </Switch>
+          <RootRouter />
         </MainLayout>
       </DataProvider>
     </Router>

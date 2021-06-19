@@ -9,15 +9,18 @@ const useGetTrendingSearchTerms = () => {
   useEffect(() => {
     setLoading(true);
     setError(false);
+    console.log('getting trends terms');
 
     getTrendingSearchTerms()
-      .then((response) => setTerms(response))
+      .then((response) => {
+        setTerms(response);
+        setLoading(false);
+        setError(false);
+      })
       .catch((e) => {
         setLoading(false);
         setError(true);
       });
-    setLoading(false);
-    setError(false);
   }, []);
 
   return { loading, error, terms };

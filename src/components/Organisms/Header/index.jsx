@@ -1,11 +1,16 @@
 import React from 'react';
-import Logo from 'components/Atoms/Logo';
+import { Link } from 'react-router-dom';
 import { HeaderWrapper } from './styles';
 
 const Header = () => {
+  const isLoged = true;
   return (
     <HeaderWrapper>
-      <Logo />
+      {isLoged ? (
+        <Link to="/logout">Logout</Link>
+      ) : (
+        <Link to="/login">Login</Link>
+      )}
     </HeaderWrapper>
   );
 };

@@ -10,13 +10,15 @@ const useGetGifById = ({ gifId }) => {
     setLoading(true);
     setError(false);
     getGifById({ gifId })
-      .then((response) => setGifs(response))
+      .then((response) => {
+        setGifs(response);
+        setLoading(false);
+        setError(false);
+      })
       .catch((e) => {
         setLoading(false);
         setError(true);
       });
-    setLoading(false);
-    setError(false);
   }, [gifId]);
 
   return { loading, error, gifs };

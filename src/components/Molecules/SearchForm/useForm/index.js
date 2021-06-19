@@ -2,7 +2,7 @@ import { useReducer } from 'react';
 import { formReducer } from './reducer';
 import { ACTION_TYPES } from './types';
 
-export const useForm = ({ initialKeyword, initialRating }) => {
+export const useForm = ({ initialKeyword = '', initialRating = 'g' } = {}) => {
   const formInitialState = {
     keyword: initialKeyword,
     rating: initialRating,

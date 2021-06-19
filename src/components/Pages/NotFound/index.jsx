@@ -43,7 +43,6 @@ const NotFound = () => {
       </SectionWrapper>
 
       <SectionWrapper bgcolor="white">
-        <Title>Top Categories</Title>
         {loadingTrendingTerms ? (
           <Title>Loading</Title>
         ) : (

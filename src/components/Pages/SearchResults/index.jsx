@@ -14,7 +14,7 @@ const SearchResults = () => {
   const { setLastSearch } = useContext(DataContext);
   const { keyword: keywordsParams, rating: ratingParams = 'g' } = useParams();
 
-  const { gifs, loading, error, setPage } = useGetGifsByKeyword({
+  const { gifs, loading, loadingMore, error, setPage } = useGetGifsByKeyword({
     keyword: keywordsParams,
     limit: 10,
     rating: ratingParams,
@@ -42,7 +42,6 @@ const SearchResults = () => {
     if (isNearScreen) debounceHandleNextPage();
   }, [isNearScreen, debounceHandleNextPage]);
 
-  if (loading) return <Title>Cargando . . . </Title>;
   if (error) return <Redirect to="/NotFound" />;
 
   return (
@@ -56,8 +55,19 @@ const SearchResults = () => {
       />
       <SectionWrapper>
         <Title>{keywordsParams}</Title>
-        <ListOfGifs minheight gifs={gifs} collage />
-        <div ref={externalRef}></div>
+        {loading ? (
+          <Title>Cargando . . . </Title>
+        ) : (
+          <>
+            <ListOfGifs
+              loadingMore={loadingMore}
+              minheight
+              gifs={gifs}
+              collage
+            />
+            <div ref={externalRef}></div>
+          </>
+        )}
       </SectionWrapper>
     </section>
   );
