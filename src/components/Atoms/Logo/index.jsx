@@ -7,7 +7,6 @@ const Logo = () => {
     <Link to="/">
       <LogoContainer>
         <Title>Giffy</Title>
-        {/* <SubTitle>The Gif Searcher</SubTitle> */}
       </LogoContainer>
     </Link>
   );

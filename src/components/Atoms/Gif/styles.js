@@ -6,7 +6,7 @@ const GifContainer = styled.article`
   height: auto;
   min-width: 200px;
   min-height: 200px;
-overflow: hidden;
+  overflow: hidden;
   ${({ collage }) =>
     collage &&
     css`
@@ -24,12 +24,12 @@ overflow: hidden;
   &:hover {
     border: 5px solid royalblue;
     h3 {
-      background-color:royalblue;
+      background-color: royalblue;
     }
   }
   &:hover img {
     transform: scale(1.2);
-    z-index: 1
+    z-index: 10;
   }
 `;
 
@@ -43,14 +43,14 @@ const GifTitle = styled.h3`
   font-weight: 500;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
-  z-index: 2
+  z-index: 10;
 `;
 const GifImage = styled.img`
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .7s linear;
+  transition: transform 0.7s linear;
 `;
 
 export { GifContainer, GifTitle, GifImage };

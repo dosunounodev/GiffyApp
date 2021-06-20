@@ -21,6 +21,7 @@ const useUser = () => {
         })
         .catch((error) => {
           window.sessionStorage.removeItem('jwt');
+          setJwt(null);
           console.error(error);
           setLoading(false);
           setError(true);

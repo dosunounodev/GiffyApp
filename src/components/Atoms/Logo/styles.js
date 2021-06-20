@@ -5,20 +5,19 @@ const LogoContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* background-color: red; */
   padding: 30px 0 20px;
 `;
 
 const Title = styled.h1`
   font-size: 6.4rem;
   font-style: italic;
+  letter-spacing: 0.3rem;
   margin-right: 10px;
   color: royalblue;
+  transition: color 0.3s linear;
+  :hover {
+    color: #fff;
+  }
 `;
 
-const SubTitle = styled.span`
-  font-size: 1.6rem;
-  font-weight: 400;
-`;
-
-export { LogoContainer, Title, SubTitle };
+export { LogoContainer, Title };
