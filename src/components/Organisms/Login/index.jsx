@@ -48,19 +48,26 @@ const Login = () => {
       {loginLoading && <Title>Checking Credentials</Title>}
       {!loginLoading && (
         <StyledForm onSubmit={handleSubmit}>
-          <Input
-            type="text"
-            placeholder="Enter your username"
-            value={username}
-            onChange={handleUserNameChange}
-          />
+          <label>
+            <span>Username:</span>
+            <Input
+              type="text"
+              placeholder="Enter your username"
+              value={username}
+              onChange={handleUserNameChange}
+            />
+          </label>
           <br />
-          <Input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
+          <label>
+            <span>Password:</span>
+            <Input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </label>
+
           <br />
           <Button height="60px" invert>
             Login

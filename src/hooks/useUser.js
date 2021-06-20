@@ -2,9 +2,12 @@ import { useState, useContext, useCallback } from 'react';
 import { UserContext } from 'contexts/UserContext';
 import { addFav as addFavService } from 'services/addFav';
 import { login as loginService } from 'services/login';
+import { LoginModalContext } from 'contexts/LoginModalContext';
 
 const useUser = () => {
   const { jwt, setJwt, favs, setFavs } = useContext(UserContext);
+  const { setShowLoginModal } = useContext(LoginModalContext);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -18,6 +21,7 @@ const useUser = () => {
           setJwt(token);
           setLoading(false);
           setError(false);
+          setShowLoginModal(false);
         })
         .catch((error) => {
           window.sessionStorage.removeItem('jwt');
@@ -27,7 +31,7 @@ const useUser = () => {
           setError(true);
         });
     },
-    [setJwt]
+    [setJwt, setShowLoginModal]
   );
 
   const logout = useCallback(() => {

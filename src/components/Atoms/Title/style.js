@@ -6,9 +6,10 @@ const StyledTitle = styled.h2`
   margin-bottom: 20px;
   font-size: 3.6rem;
   text-align: center;
+  color: #fff;
   ${({ color }) => css`
     color: ${color};
-  `}
+  `};
 `;
 
 export { StyledTitle };

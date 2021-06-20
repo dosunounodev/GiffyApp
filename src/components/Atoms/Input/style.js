@@ -10,7 +10,8 @@ export const StyledInput = styled.input`
   border: 2px solid #1565c0;
   border-radius: 5px;
   text-align: center;
-  font-weight: bold;
+  font-size: 1.6rem;
+  font-weight: normal;
   color: #1565c0;
   /* text-transform: uppercase; */
   :focus {
