@@ -9,8 +9,8 @@ export const ModalWrapper = styled.section`
   display: grid;
   place-items: center;
   height: 100vh;
-  background-color: rgb(255 255 255 / 0.5);
   backdrop-filter: blur(5px);
+  background-color: transparent;
   z-index: 20;
 `;
 

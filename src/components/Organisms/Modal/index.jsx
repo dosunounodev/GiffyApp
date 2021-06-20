@@ -7,7 +7,7 @@ const Modal = ({ children, onClose }) => {
   return (
     <ModalWrapper>
       <ModalContent>
-        <Button onClick={onClose}>X</Button>
+        <Button onClick={onClose}>✖️</Button>
         {children}
       </ModalContent>
     </ModalWrapper>

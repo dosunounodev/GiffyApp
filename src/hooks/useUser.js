@@ -1,18 +1,17 @@
 import { useState, useContext, useCallback } from 'react';
 import { UserContext } from 'contexts/UserContext';
 import { addFav as addFavService } from 'services/addFav';
+import { deleteFav as deleteFavService } from 'services/deleteFav';
 import { login as loginService } from 'services/login';
-import { LoginModalContext } from 'contexts/LoginModalContext';
 
 const useUser = () => {
   const { jwt, setJwt, favs, setFavs } = useContext(UserContext);
-  const { setShowLoginModal } = useContext(LoginModalContext);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const login = useCallback(
-    ({ username, password }) => {
+    ({ username, password, showModalToggle }) => {
       setLoading(true);
       setError(false);
       loginService({ username, password })
@@ -21,7 +20,7 @@ const useUser = () => {
           setJwt(token);
           setLoading(false);
           setError(false);
-          setShowLoginModal(false);
+          showModalToggle(false);
         })
         .catch((error) => {
           window.sessionStorage.removeItem('jwt');
@@ -31,7 +30,7 @@ const useUser = () => {
           setError(true);
         });
     },
-    [setJwt, setShowLoginModal]
+    [setJwt]
   );
 
   const logout = useCallback(() => {
@@ -48,9 +47,14 @@ const useUser = () => {
     [jwt, setFavs]
   );
 
-  const deleteFav = ({ id }) => {
-    alert(`borrando gif ${id}`);
-  };
+  const deleteFav = useCallback(
+    ({ id }) => {
+      deleteFavService({ id, jwt })
+        .then((favsResponse) => setFavs(favsResponse))
+        .catch((error) => console.error(error));
+    },
+    [jwt, setFavs]
+  );
 
   return {
     login,

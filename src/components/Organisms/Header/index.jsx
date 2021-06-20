@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import useUser from 'hooks/useUser';
 import { HeaderLogo, HeaderWrapper, LoginButton, LogoutButton } from './styles';
 

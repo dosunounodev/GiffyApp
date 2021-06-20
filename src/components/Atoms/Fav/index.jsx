@@ -1,21 +1,17 @@
-import React, { useContext } from 'react';
-// import { useHistory } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
 import { UserContext } from 'contexts/UserContext';
 import Modal from 'components/Organisms/Modal';
 import useUser from 'hooks/useUser';
-import { StyledFav } from './style';
 import Login from 'components/Organisms/Login';
-import { LoginModalContext } from 'contexts/LoginModalContext';
+import { StyledFav } from './style';
 
 const Fav = ({ id }) => {
-  // const history = useHistory();
   const { isLogged, addFav, deleteFav, favs } = useUser();
   const { showFavs } = useContext(UserContext);
-  const { showLoginModal, setShowLoginModal } = useContext(LoginModalContext);
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const isFavFaved = favs.some((favId) => favId === id);
 
   const handleClick = () => {
-    // if (!isLogged) return history.push('/login');
     if (!isLogged) return setShowLoginModal(true);
     isFavFaved ? deleteFav({ id }) : addFav({ id });
   };
@@ -35,7 +31,7 @@ const Fav = ({ id }) => {
       </StyledFav>
       {showLoginModal && (
         <Modal onClose={handleCloseModal}>
-          <Login />
+          <Login showModalToggle={setShowLoginModal} />
         </Modal>
       )}
     </>

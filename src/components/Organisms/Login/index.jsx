@@ -6,7 +6,7 @@ import Input from 'components/Atoms/Input';
 import { StyledForm } from './style';
 import Title from 'components/Atoms/Title';
 
-const Login = () => {
+const Login = ({ showModalToggle }) => {
   const initialValues = '';
   const [username, setUsername] = useState(initialValues);
   const [password, setPassword] = useState(initialValues);
@@ -39,14 +39,13 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login({ username, password });
+    login({ username, password, showModalToggle });
   };
 
   return (
     <>
       <Title>Login</Title>
-      {loginLoading && <Title>Checking Credentials</Title>}
-      {!loginLoading && (
+      {!loginLoading ? (
         <StyledForm onSubmit={handleSubmit}>
           <label>
             <span>Username:</span>
@@ -75,6 +74,8 @@ const Login = () => {
           <br />
           {loginError && <Title color="salmon">Credentials are invalid</Title>}
         </StyledForm>
+      ) : (
+        <Title>Checking Credentials</Title>
       )}
     </>
   );
