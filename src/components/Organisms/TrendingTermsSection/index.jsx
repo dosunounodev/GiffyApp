@@ -16,7 +16,7 @@ const TrendingTermsSection = () => {
 
   return (
     <>
-      <Title>Top Categories</Title>
+      <Title color="royalblue">Top Categories</Title>
       <TrendingsWrapper>
         {trendingTerms.map((topic, index) => (
           <TrendingGifLink key={index} to={`/search/${topic}`}>
